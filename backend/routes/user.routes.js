@@ -1,17 +1,18 @@
 import express from "express"
-import { getCurrentUser } from "../controllers/user.controller.js"
+import { editProfile, getCurrentUser, getOtherUsers, search } from "../controllers/user.controllers.js"
 import isAuth from "../middlewares/isAuth.js"
-
+import { upload } from "../middlewares/multer.js"
 
 const userRouter=express.Router()
 
-userRouter.get("/current",isAuth,getCurrentUser)
-
-
+userRouter.get("/current",isAuth, getCurrentUser)
+userRouter.get("/others",isAuth, getOtherUsers)
+userRouter.put("/profile",isAuth,upload.single("image"),editProfile)
+userRouter.get("/search",isAuth, search)
 export default userRouter
 
 
-
-// /api/auth/signup
-// /api/auth/login
-// /api/auth/logOut
+// /api/user/current
+// /api/user/profile
+// /api/user/others
+// /api/user/search

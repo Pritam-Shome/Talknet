@@ -8,3 +8,4 @@ frontend1
 
 # Ignore log files
 *.log
+.frontend1

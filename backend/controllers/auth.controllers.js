@@ -1,11 +1,6 @@
-import bcrypt from "bcrypt";
-import User from "../models/user.model.js";
-import genToken from "../config/token.js";
-
-
-
-
-
+import genToken from "../config/token.js"
+import User from "../models/user.model.js"
+import bcrypt from "bcryptjs"
 export const signUp=async (req,res)=>{
    try {
     const {userName,email,password}=req.body
@@ -33,7 +28,7 @@ res.cookie("token",token,{
     httpOnly:true,
     maxAge:7*24*60*60*1000,
     sameSite:"Strict",
-    secure:false//true if in production
+    secure:false
    })
 
    return res.status(201).json(user)
@@ -43,6 +38,7 @@ res.cookie("token",token,{
     return res.status(500).json({message:`signup error ${error}`})
    } 
 }
+
 
 export const login=async (req,res)=>{
     try {
@@ -74,7 +70,7 @@ export const login=async (req,res)=>{
     } 
  }
 
-export const logOut=async (req,res)=>{
+ export const logOut=async (req,res)=>{
     try {
         res.clearCookie("token")
         return res.status(200).json({message:"log out successfully"})
