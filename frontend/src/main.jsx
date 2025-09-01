@@ -8,7 +8,7 @@ import { store } from './redux/store';
 
 
 
-export const serverUrl="https://talknet-backend.onrender.com/"
+export const serverUrl="https://talknet-backend.onrender.com"
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
